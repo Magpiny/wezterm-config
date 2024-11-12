@@ -8,6 +8,7 @@
 int main()
 {
   std::println("Wezterm is my current default terminal");
+  std::println("I'm using Manjaro Linux and Neovim btw");
 }
 
 // NOTE: This ain't rust code though
