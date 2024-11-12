@@ -16,3 +16,7 @@ int main()
 ```
 
 #### THIS IS A VERY BASIC CONFIG :: KISS
+
+## USAGE
+* Download wezterm
+* Download and put the wezterm.lua config file in ~/.config/wezterm/ directorory and reload the terminal(wezterm terminal)
