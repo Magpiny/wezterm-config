@@ -10,7 +10,10 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 -- config.color_scheme = "MaterialOcean"
-config.color_scheme = "MaterialDesignColors"
+config.color_scheme = "GruvboxDark" --"MaterialDesignColors"
+
+-- Enable font Ligatures
+config.harfbuzz_features = { "calt=1", "clig=1", "liga=1" }
 
 ------------- Tab bar ----------------------------
 config.enable_tab_bar = false -- Removes the top bar coz i don't like it
@@ -56,7 +59,14 @@ config.font = wezterm.font_with_fallback({
 	"JetBrains Mono",
 })
 
-config.font_size = 14
+config.font_size = 16
+config.freetype_load_target = "Light" --light/Normal/Bold
+
+config.inactive_pane_hsb = {
+	hue = 1.0,
+	saturation = 0.7, -- Less vibrant
+	brightness = 0.9,
+}
 
 -- copy to clipboard
 config.keys = {
@@ -88,30 +98,37 @@ config.keys = {
 	},
 }
 
--- Split pane horizontally
+-- Split pane vertically
 config.keys = {
+
+	-- Split pane horizontally
 	-- This will create a new split and run your default program inside it
 	{
 		key = "%",
-		mods = "CTRL|SHIFT|ALT",
+		mods = "LEADER",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
-}
 
--- Split pane vertically
-config.keys = {
 	-- This will create a new split and run your default program inside it
 	{
 		key = '"',
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
-}
 
--- QUIT Applications eventually killing all tabs
-config.keys = {
+	{
+		key = "n",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.SpawnCommandInNewTab({ args = { "nvim" } }),
+	},
+
+	-- QUIT Applications eventually killing all tabs
 	{ key = "q", mods = "CTRL", action = wezterm.action.QuitApplication },
 }
+
+-- Enable GPU Acceleration
+config.front_end = "OpenGL"
+
 -- and finally, return the configuration to wezterm
 return config
 --------> Config by: Magpiny BO --------------->
