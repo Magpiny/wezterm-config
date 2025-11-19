@@ -10,7 +10,7 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 -- config.color_scheme = "MaterialOcean"
-config.color_scheme = "GruvboxDark" --"MaterialDesignColors"
+config.color_scheme = "Tokyo Night Storm" --"MaterialDesignColors"
 
 -- Enable font Ligatures
 config.harfbuzz_features = { "calt=1", "clig=1", "liga=1" }
@@ -54,9 +54,14 @@ config.keys = {
 config.window_background_opacity = 0.95
 
 -- font configs
+--config.font = wezterm.font_with_fallback({
+--	"Fira Code",
+--	"JetBrains Mono",
+--})
+--
 config.font = wezterm.font_with_fallback({
-	"Fira Code",
-	"JetBrains Mono",
+	{ family = "JetBrains Mono", weight = "Medium" },
+	"Noto Color Emoji",
 })
 
 config.font_size = 16
